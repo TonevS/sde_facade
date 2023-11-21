@@ -28,6 +28,25 @@ public class MovieWatcherFacade implements Process {
         dvdPlayer.play("Django Unchained");
     }
     public void stop() {
+        PopcornPopper popcornPopper = new PopcornPopper("Popcorn Popper");
+        TheaterLights theaterLights = new TheaterLights("Theater Ceiling Lights");
+        Screen screen = new Screen("Theater Screen");
+        Amplifier amplifier = new Amplifier("Top-O-Line Amplifier");
+        DvdPlayer dvdPlayer = new DvdPlayer("Top-O-Line DVD Player", amplifier);
+        Projector projector = new Projector("Top-O-Line Projector", dvdPlayer);
 
+        popcornPopper.off();
+
+        theaterLights.on();
+
+        screen.up();
+
+        projector.off();
+
+        amplifier.off();
+
+        dvdPlayer.stop();
+        dvdPlayer.eject();
+        dvdPlayer.off();
     }
 }
