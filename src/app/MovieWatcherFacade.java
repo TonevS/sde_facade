@@ -1,14 +1,23 @@
 package app;
 
 public class MovieWatcherFacade implements Process {
-    public void start() {
-        PopcornPopper popcornPopper = new PopcornPopper("Popcorn Popper");
-        TheaterLights theaterLights = new TheaterLights("Theater Ceiling Lights");
-        Screen screen = new Screen("Theater Screen");
-        Amplifier amplifier = new Amplifier("Top-O-Line Amplifier");
-        DvdPlayer dvdPlayer = new DvdPlayer("Top-O-Line DVD Player", amplifier);
-        Projector projector = new Projector("Top-O-Line Projector", dvdPlayer);
+    private final PopcornPopper popcornPopper;
+    private final TheaterLights theaterLights;
+    private final Screen screen;
+    private final Amplifier amplifier;
+    private final DvdPlayer dvdPlayer;
+    private final Projector projector;
 
+    public MovieWatcherFacade() {
+        popcornPopper = new PopcornPopper("Popcorn Popper");
+        theaterLights = new TheaterLights("Theater Ceiling Lights");
+        screen = new Screen("Theater Screen");
+        amplifier = new Amplifier("Top-O-Line Amplifier");
+        dvdPlayer = new DvdPlayer("Top-O-Line DVD Player", amplifier);
+        projector = new Projector("Top-O-Line Projector", dvdPlayer);
+    }
+
+    public void start() {
         popcornPopper.on();
         popcornPopper.pop();
 
@@ -24,17 +33,10 @@ public class MovieWatcherFacade implements Process {
         amplifier.setSurroundSound();
         amplifier.setVolume(5);
 
-        dvdPlayer.on();;
+        dvdPlayer.on();
         dvdPlayer.play("Django Unchained");
     }
     public void stop() {
-        PopcornPopper popcornPopper = new PopcornPopper("Popcorn Popper");
-        TheaterLights theaterLights = new TheaterLights("Theater Ceiling Lights");
-        Screen screen = new Screen("Theater Screen");
-        Amplifier amplifier = new Amplifier("Top-O-Line Amplifier");
-        DvdPlayer dvdPlayer = new DvdPlayer("Top-O-Line DVD Player", amplifier);
-        Projector projector = new Projector("Top-O-Line Projector", dvdPlayer);
-
         popcornPopper.off();
 
         theaterLights.on();
